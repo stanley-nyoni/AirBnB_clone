@@ -12,6 +12,10 @@ from models.base_model import BaseModel
 
 
 class TestBaseModel(unittest.TestCase):
+
+    def setUp(self):
+        pass
+
     def test_creation_and_initialization(self):
         """Check if attributes are correctly initialized"""
         base = BaseModel()
@@ -27,7 +31,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_save(self):
         """Check if we successfully updated the updated_at attribute"""
-        
+
         base = BaseModel()
         initial_update = base.updated_at
         # Update time by calling save()
@@ -56,5 +60,8 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_dict['updated_at'], str)
         self.assertEqual(base_dict['__class__'], 'BaseModel')
 
+    def tearDown(self):
+        pass
+    
 if __name__ == '__main__':
     unittest.main()
