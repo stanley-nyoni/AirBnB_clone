@@ -19,7 +19,7 @@ class BaseModel:
                             kwargs["created_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 elif key == "updated_at":
                     self.__dict__["updated_at"] = datetime.strptime(
-                            kwargs["updtaed_at"], "%Y-%m-%dT%H:%M:%S.%f")
+                            kwargs["updated_at"], "%Y-%m-%dT%H:%M:%S.%f")
                 else:
                     self.__dict__[key] = kwargs[key]
         else:
