@@ -38,11 +38,3 @@ class BaseModel:
         obj_dict['updated_at'] = self.updated_at.isoformat()
 
         return obj_dict
-
-
-base = BaseModel()
-model_json = base.to_dict()
-print(model_json)
-
-for key in model_json.keys():
-    print("\t{}: ({}) - {}".format(key, type(model_json[key]), model_json[key]))
