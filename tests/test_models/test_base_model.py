@@ -23,6 +23,19 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base.created_at, datetime.datetime)
         self.assertIsInstance(base.updated_at, datetime.datetime)
 
+    def test_init_with_no_args(self):
+        """"Tests __init__ with no arguments passed to it"""
+        with self.assertRaises(TypeError) as error:
+            BaseModel.__init__()
+        errmsg = "__init__() missing 1 required positional argument: 'self'"
+        self.assertEqual(str(error.exception), errmsg)
+
+    def test_init_with_multiple_args(self):
+        """"Tests __init__ with multiple arguments passed to it"""
+        a = [i for i in range(100)]
+        bm = BaseModel(0, 1, 2, 3, 4, 5)
+        bm = BaseModel(*a)
+
     def test_str_method(self):
         """Check the returned string, if matches the expected"""
 
