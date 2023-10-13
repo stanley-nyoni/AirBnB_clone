@@ -10,7 +10,7 @@ import cmd
 import shlex
 from models.base_model import BaseModel
 from models.user import User
-from models.engine.file_storage import storage 
+from models import storage 
 
 class HBNBCommand(cmd.Cmd):
     """Initializing the command interpreter"""
