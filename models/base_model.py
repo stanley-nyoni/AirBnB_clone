@@ -9,6 +9,7 @@ import uuid
 import datetime
 import models
 
+
 class BaseModel:
     """Initialize a BaseModel class"""
     def __init__(self, *args, **kwargs):
@@ -28,11 +29,11 @@ class BaseModel:
             self.updated_at = datetime.datetime.now()
             models.storage.new(self)
 
-    
     def __str__(self):
         """Returns a string represantion"""
 
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".format(self.__class__.__name__,
+                                     self.id, self.__dict__)
 
     def save(self):
         """Updates the attribute updated_at with current datetime"""
@@ -42,7 +43,7 @@ class BaseModel:
 
     def to_dict(self):
         """Returns a dictionary containing key/values of dict instance"""
-        
+
         # Create a dictionary from the instance attributes
         obj_dict = self.__dict__.copy()
         obj_dict['__class__'] = self.__class__.__name__
