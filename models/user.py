@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """Defines a user class that inherits from BaseModel"""
-from models.base_bodel import BaseModel
+from models.base_model import BaseModel
 
 
 class User(BaseModel):
