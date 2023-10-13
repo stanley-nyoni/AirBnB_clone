@@ -9,7 +9,6 @@ from models.base_model import BaseModel
 class FileStorage:
     """Defines a class for storing and retrieving data"""
 
-
     __file_path = "file.json"
     __objects = {}
 
@@ -18,7 +17,7 @@ class FileStorage:
         return FileStorage.__objects
 
     def new(self, obj):
-        """Function to set in __object with key <obj.__class__.__name__, obj.id>"""
+        """Sets in __object with key <obj.__class__.__name__, obj.id>"""
         if obj:
             key = '{}.{}'.format(type(obj).__class__.__name__, obj.id)
             FileStorage.__objects[key] = obj
@@ -26,8 +25,9 @@ class FileStorage:
     def save(self):
         """Serializes __objects to JSON file"""
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
-            serialized_objects = {k: val.to_dict() for k, val, in FileStorage.__objects.items()}
-            json.dump(serialized_objects, file)
+            ser_obj = {k: val.to_dict()
+                       for k, val, in FileStorage.__objects.items()}
+            json.dump(ser_obj, file)
 
     def all_classes(self):
         """Returns the dictionary of the base class and it's value"""
@@ -38,30 +38,37 @@ class FileStorage:
         from models.place import Place
         from models.review import Review
 
-        classes = {"BaseModel": BaseModel,
-                    "User": User,
-                    "State": State,
-                    "City": City,
-                    "Amenity": Amenity,
-                    "Place": Place,
-                    "Review": Review}
+        classes = {
+                "BaseModel": BaseModel,
+                "User": User,
+                "State": State,
+                "City": City,
+                "Amenity": Amenity,
+                "Place": Place,
+                "Review": Review}
         return classes
 
     def attributes(self):
         """Returns the valid attribute and its types"""
         attributes = {
-            "BaseModel": {"id": str,
-                      "created_at": datetime.datetime,
-                      "updated_at": datetime.datetime},
-            "User": {"email": str,
+                "BaseModel":
+                {"id": str,
+                    "created_at": datetime.datetime,
+                    "updated_at": datetime.datetime},
+                "User":
+                {"email": str,
                     "password": str,
                     "first_name": str,
                     "last_name": str},
-            "State": {"name": str},
-            "City": {"state": str,
+                "State":
+                {"name": str},
+                "City":
+                {"state": str,
                     "name": str},
-            "Amenity": {"name": str},
-            "Place": {"city_id": str,
+                "Amenity":
+                {"name": str},
+                "Place":
+                {"city_id": str,
                     "user_id": str,
                     "name": str,
                     "description": str,
@@ -72,7 +79,8 @@ class FileStorage:
                     "latitude": float,
                     "longitute": float,
                     "amenity_ids": list},
-            "Review": {"place_id": str,
+                "Review":
+                {"place_id": str,
                     "user_id": str,
                     "text": str}
         }
@@ -83,8 +91,8 @@ class FileStorage:
         try:
             with open(FileStorage.__file_path, "r", encoding="utf-8") as f:
                 obj_dict = json.load(f)
-                obj_dict = obj_dict = {k: self.all_classes()[val["__class__"]](**val)
-                        for k, val in obj_dict.items()}
+                obj_dict = {k: self.all_classes()[val["__class__"]](**val)
+                            for k, val in obj_dict.items()}
                 FileStorage.__objects = obj_dict
         except FileNotFoundError:
             pass
