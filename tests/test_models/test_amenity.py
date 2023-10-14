@@ -9,7 +9,7 @@ from models.base_model import BaseModel
 from models.engine.file_storage import FileStorage
 
 
-class TestCity(unittest.TestCase):
+class TestAmenity(unittest.TestCase):
     """Test cases for the amenity class"""
 
     def test_amenity_inherits_from_base_model(self):
