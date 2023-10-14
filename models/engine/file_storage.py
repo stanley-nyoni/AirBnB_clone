@@ -19,7 +19,7 @@ class FileStorage:
     def new(self, obj):
         """Sets in __object with key <obj.__class__.__name__, obj.id>"""
         if obj:
-            key = '{}.{}'.format(type(obj).__class__.__name__, obj.id)
+            key = '{}.{}'.format(obj.__class__.__name__, obj.id)
             FileStorage.__objects[key] = obj
 
     def save(self):
@@ -27,7 +27,7 @@ class FileStorage:
         with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
             ser_obj = {k: val.to_dict()
                        for k, val, in FileStorage.__objects.items()}
-            json.dump(ser_obj, file)
+            json.dump(ser_obj, file, indent=4)
 
     def all_classes(self):
         """Returns the dictionary of the base class and it's value"""
