@@ -11,6 +11,7 @@ from models import storage
 import json
 import os
 
+
 class TestState(unittest.TestCase):
     """Defines the testcases for State"""
 
@@ -52,6 +53,7 @@ class TestState(unittest.TestCase):
         """"Tears down test methods"""
         self.resetStorage()
         pass
+
 
 if __name__ == "__main__":
     unittest.main()
