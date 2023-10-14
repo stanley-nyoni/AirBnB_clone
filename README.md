@@ -14,19 +14,45 @@ To start the AirBnB Clone console, you can run the console.py script. You can do
 
 **Using the Command Interpreter**
 The AirBnB Clone command interpreter provides various commands for managing and interacting with objects. Some of the key commands include:
-    | **Command** | **Description**         | **Usage**         |
-    | - create    | creates a new instance  | create BaseModel  |
-    |             | of a specified class    |                   |
-    |-----------------------------------------------------------|
-    | - show      | displays the string     | show BaseModel id  |
-    |             | repr of an instance     |                   |
-    |-----------------------------------------------------------|
-    | - create    | creates a new instance  | create BaseModel  |
-    |             | of a specified class    |                   |
-    |-----------------------------------------------------------|
-    | - create    | creates a new instance  | create BaseModel  |
-    |             | of a specified class    |                   |
-    |-----------------------------------------------------------|
-    | - create    | creates a new instance  | create BaseModel  |
-    |             | of a specified class    |                   |
-    |-----------------------------------------------------------|
+
+- CREATE 
+Creates a new instance of a specified class, saves it, and prints its ID.
+
+**Usage**
+``` (hbnb) create BaseModel```
+
+- SHOW
+ Displays the string representation of an instance based on class name and ID.
+
+ **Usage**
+ ``` (hbnb) show BaseModel 1234-5678```
+
+ - DESTROY
+ Deletes an instance based on class name and ID.
+
+ **Usage**
+ ```(hbnb) destroy BaseModel 1234-5678```
+
+- ALL
+Lists all instances or instances of a specific class.
+
+**Usage**
+```(hbnb) all BaseModel```
+
+- UPDATE 
+Updates the attributes of an instance based on class name and ID.
+
+```(hbnb) update BaseModel 1234-5678 email "new@email.com"```
+
+- QUIT / EOF
+ Exits the command interpreter.
+
+ **Usage**
+ ```(hbnb) quit```
+
+- HELP
+Prints the information or documentation about the available commands and their usage within the interpreter
+
+**Usage**
+```(hbnb) help```
+
