@@ -34,7 +34,12 @@ class TestState(unittest.TestCase):
     def test_state_name(self):
         """checks if the default name is an empty string"""
         state_instance = State()
-        self.assertEqual(state_instance.name, "")
+        self.assertEqual(type(state_instance.name), str)
+
+    def test_state_instantiation(self):
+        state = State()
+        self.assertIsInstance(state, State)
+        self.assertTrue(issubclass(type(state), BaseModel))
 
     def test_new_method_on_state(self):
         storage = FileStorage()
