@@ -5,16 +5,18 @@ Module - test_base_model
 Test cases for base model
 """
 
-
+import os
 import unittest
 import datetime
 from models.base_model import BaseModel
+from models.engine.file_storage import FileStorage
 
 
 class TestBaseModel(unittest.TestCase):
 
     def setUp(self):
         pass
+
 
     def test_creation_and_initialization(self):
         """Check if attributes are correctly initialized"""
@@ -72,6 +74,30 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(base_dict['created_at'], str)
         self.assertIsInstance(base_dict['updated_at'], str)
         self.assertEqual(base_dict['__class__'], 'BaseModel')
+
+    def test_creating_an_instance_from_dict(self):
+        """Creating an instance from a dictionary"""
+        #Get the dictionary ready
+        data = {
+            'id': 'my_id',
+            'created_at': '2023-10-11T10:00:00.000000',
+            'updated_at': '2023-10-11T11:00:00.000000',
+            'name': 'My Base',
+            'number': 234,
+            '__class__': 'BaseModel'
+        }
+        #Create an object using **data
+        obj = BaseModel(**data)
+
+        self.assertEqual(obj.id, 'my_id')
+        self.assertEqual(obj.name, 'My Base')
+        self.assertEqual(obj.number, 234)
+
+        self.assertIsInstance(obj.created_at, datetime.datetime)
+        self.assertIsInstance(obj.updated_at, datetime.datetime)
+
+    
+    
 
     def tearDown(self):
         pass
