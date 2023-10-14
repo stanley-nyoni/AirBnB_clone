@@ -15,9 +15,11 @@ from models.city import City
 from models.amenity import Amenity
 from models.place import Place
 from models.review import Review
-from models import storage 
+from models import storage
+
 
 storage.reload()
+
 
 class HBNBCommand(cmd.Cmd):
     """Initializing the command interpreter"""
@@ -35,7 +37,7 @@ class HBNBCommand(cmd.Cmd):
 
     def emptyline(self):
         pass
-    
+
     # Maping class names to their respective classes
     classes = {
         "BaseModel": BaseModel,
@@ -65,20 +67,20 @@ class HBNBCommand(cmd.Cmd):
 
     def do_show(self, arg):
         """Print the string represantion of an instance."""
-        
+
         if not arg:
             print("** class name missing **")
             return
 
         args = shlex.split(arg)
         if args[0] not in self.classes:
-             print("** class doesn't exist **")
-             return
+            print("** class doesn't exist **")
+            return
 
         if len(args) < 2:
             print("** instance id missing **")
             return
-        
+
         obj_key = args[0] + '.' + args[1]
         objects = storage.all()
         if obj_key in objects:
@@ -95,13 +97,13 @@ class HBNBCommand(cmd.Cmd):
 
         args = shlex.split(arg)
         if args[0] not in self.classes:
-             print("** class doesn't exist **")
-             return
+            print("** class doesn't exist **")
+            return
 
         if len(args) < 2:
             print("** instance id missing **")
             return
-        
+
         obj_key = args[0] + '.' + args[1]
         objects = storage.all()
         if obj_key in objects:
@@ -119,7 +121,8 @@ class HBNBCommand(cmd.Cmd):
             return
 
         objects = storage.all()
-        instance_list = [str(v) for k, v in objects.items() if k.split('.')[0] == args[0]]
+        instance_list = \
+            [str(v) for k, v in objects.items() if k.split('.')[0] == args[0]]
         print(instance_list)
 
     def do_update(self, arg):
@@ -159,6 +162,7 @@ class HBNBCommand(cmd.Cmd):
             pass
         setattr(instance, attr_name, attr_value)
         instance.save()
+
 
 if __name__ == '__main__':
     HBNBCommand().cmdloop()
