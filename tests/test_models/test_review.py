@@ -12,7 +12,7 @@ import json
 import os
 
 
-class TestState(unittest.TestCase):
+class TestReview(unittest.TestCase):
     """Defines the testcases for Review"""
 
     def setUp(self):

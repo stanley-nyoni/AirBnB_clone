@@ -12,7 +12,7 @@ import json
 import os
 
 
-class TestState(unittest.TestCase):
+class TestPlace(unittest.TestCase):
     """Defines the testcases for Place"""
 
     def setUp(self):
