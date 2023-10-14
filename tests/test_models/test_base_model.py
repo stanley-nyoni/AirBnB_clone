@@ -17,7 +17,6 @@ class TestBaseModel(unittest.TestCase):
     def setUp(self):
         pass
 
-
     def test_creation_and_initialization(self):
         """Check if attributes are correctly initialized"""
         base = BaseModel()
@@ -42,7 +41,8 @@ class TestBaseModel(unittest.TestCase):
         """Check the returned string, if matches the expected"""
 
         base = BaseModel()
-        self.assertEqual(str(base), "[BaseModel] ({}) {}".format(base.id, base.__dict__))
+        self.assertEqual(str(base), "[BaseModel] ({}) {}".format(
+                                                    base.id, base.__dict__))
 
     def test_save(self):
         """Check if we successfully updated the updated_at attribute"""
@@ -77,7 +77,7 @@ class TestBaseModel(unittest.TestCase):
 
     def test_creating_an_instance_from_dict(self):
         """Creating an instance from a dictionary"""
-        #Get the dictionary ready
+        # Get the dictionary ready
         data = {
             'id': 'my_id',
             'created_at': '2023-10-11T10:00:00.000000',
@@ -86,7 +86,7 @@ class TestBaseModel(unittest.TestCase):
             'number': 234,
             '__class__': 'BaseModel'
         }
-        #Create an object using **data
+        # Create an object using **data
         obj = BaseModel(**data)
 
         self.assertEqual(obj.id, 'my_id')
@@ -96,11 +96,9 @@ class TestBaseModel(unittest.TestCase):
         self.assertIsInstance(obj.created_at, datetime.datetime)
         self.assertIsInstance(obj.updated_at, datetime.datetime)
 
-    
-    
-
     def tearDown(self):
         pass
-    
+
+
 if __name__ == '__main__':
     unittest.main()
