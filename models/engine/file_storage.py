@@ -24,10 +24,10 @@ class FileStorage:
 
     def save(self):
         """Serializes __objects to JSON file"""
-        with open(FileStorage.__file_path, 'w', encoding='utf-8') as file:
+        with open(FileStorage.__file_path, "w", encoding="utf-8") as f:
             ser_obj = {k: val.to_dict()
                        for k, val, in FileStorage.__objects.items()}
-            json.dump(ser_obj, file, indent=4)
+            json.dump(ser_obj, f, indent=4)
 
     def all_classes(self):
         """Returns the dictionary of the base class and it's value"""
@@ -95,4 +95,4 @@ class FileStorage:
                             for k, val in obj_dict.items()}
                 FileStorage.__objects = obj_dict
         except FileNotFoundError:
-            pass
+            return
