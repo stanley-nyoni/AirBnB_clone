@@ -40,11 +40,13 @@ class TestReview(unittest.TestCase):
         self.assertEqual(type(review_attr.text), str)
 
     def test_review_instantiation(self):
+        """tests the instantiation of Review"""
         review = Review()
         self.assertIsInstance(review, Review)
         self.assertTrue(issubclass(type(review), BaseModel))
 
     def test_new_method_on_review(self):
+        """checks if a review has been saved to storage"""
         storage = FileStorage()
         review = Review()
         storage.new(review)

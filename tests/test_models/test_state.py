@@ -38,11 +38,13 @@ class TestState(unittest.TestCase):
         self.assertEqual(type(state_instance.name), str)
 
     def test_state_instantiation(self):
+        """Tests the instantiation of state"""
         state = State()
         self.assertIsInstance(state, State)
         self.assertTrue(issubclass(type(state), BaseModel))
 
     def test_new_method_on_state(self):
+        """checks if a state has been saved to storage"""
         storage = FileStorage()
         state = State()
         storage.new(state)

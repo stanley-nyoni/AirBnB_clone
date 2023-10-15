@@ -48,11 +48,13 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(place_attr.amenity_ids), list)
 
     def test_place_instantiation(self):
+        """tests the instantiation of Place"""
         place = Place()
         self.assertIsInstance(place, Place)
         self.assertTrue(issubclass(type(place), BaseModel))
 
     def test_new_method_on_place(self):
+        """Verifies that the place has been saved to the storage file"""
         storage = FileStorage()
         place = Place()
         storage.new(place)
