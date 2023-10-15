@@ -3,7 +3,6 @@
 import json
 import datetime
 import os
-from models.base_model import BaseModel
 
 
 class FileStorage:
@@ -31,6 +30,7 @@ class FileStorage:
 
     def all_classes(self):
         """Returns the dictionary of the base class and it's value"""
+        from models.base_model import BaseModel
         from models.user import User
         from models.state import State
         from models.city import City
@@ -95,4 +95,4 @@ class FileStorage:
                             for k, val in obj_dict.items()}
                 FileStorage.__objects = obj_dict
         except FileNotFoundError:
-            return
+            pass
