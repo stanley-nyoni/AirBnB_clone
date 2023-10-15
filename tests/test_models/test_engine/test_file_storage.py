@@ -35,7 +35,11 @@ class TestFileStorage(unittest.TestCase):
         all_objs = self.storage.all()
         self.assertEqual(all_objs, self.storage._FileStorage__objects)
 
-    
+    def test_file_storage_save_with_args(self):
+        """Checks save when none argument is passed"""
+        with self.assertRaises(TypeError):
+            models.storage.save(None)
+
     def test_reload_non_existent_file(self):
         """Ensure no exception is raised when trying to reload a non-existent file"""
         self.storage._FileStorage__file_path = "non_existent_file.json"
