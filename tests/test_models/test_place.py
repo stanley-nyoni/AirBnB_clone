@@ -44,7 +44,7 @@ class TestPlace(unittest.TestCase):
         self.assertEqual(type(place_attr.max_guest), int)
         self.assertEqual(type(place_attr.price_by_night), int)
         self.assertEqual(type(place_attr.latitude), float)
-        self.assertEqual(type(place_attr.longitute), float)
+        self.assertEqual(type(place_attr.longitude), float)
         self.assertEqual(type(place_attr.amenity_ids), list)
 
     def test_place_instantiation(self):
