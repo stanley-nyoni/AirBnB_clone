@@ -116,7 +116,12 @@ class HBNBCommand(cmd.Cmd):
         """Print all instances"""
 
         args = shlex.split(arg)
-        if not arg or args[0] not in self.classes:
+        if not args:
+            print([str(v) for v in storage.all().values()])
+            return
+
+        class_name = args[0]
+        if class_name not in self.classes:
             print("** class doesn't exist **")
             return
 
